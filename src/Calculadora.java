@@ -10,7 +10,9 @@ public class Calculadora {
 
 	private JFrame frame;
 	private JTextField text;
-
+	protected float num1;
+	protected float num2;
+	protected int operacion;
 	/**
 	 * Launch the application.
 	 */
@@ -49,11 +51,9 @@ public class Calculadora {
 		/*Evento Boton*/
 		button.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
-				int valor=1;
-				if (e.getSource()==button) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "1";
+				text.setText(aux);
 			}
 				
 		}
@@ -63,11 +63,9 @@ public class Calculadora {
 		frame.getContentPane().add(button_1);
 		button_1.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
-				int valor=2;
-				if (e.getSource()==button_1) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "2";
+				text.setText(aux);
 			}
 				
 		}
@@ -79,10 +77,9 @@ public class Calculadora {
 		button_2.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=3;
-				if (e.getSource()==button_2) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "3";
+				text.setText(aux);
 			}
 				
 		}
@@ -95,10 +92,9 @@ public class Calculadora {
 		button_3.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=4;
-				if (e.getSource()==button_3) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "4";
+				text.setText(aux);
 			}
 				
 		}
@@ -111,10 +107,9 @@ public class Calculadora {
 		button_4.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=5;
-				if (e.getSource()==button_4) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "5";
+				text.setText(aux);
 			}
 				
 		}
@@ -127,10 +122,9 @@ public class Calculadora {
 		button_5.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=6;
-				if (e.getSource()==button_5) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "6";
+				text.setText(aux);
 			}
 				
 		}
@@ -143,10 +137,9 @@ public class Calculadora {
 		button_6.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=7;
-				if (e.getSource()==button_6) {
-		            text.setText(""+valor);
-		        }
+				String aux = "";
+				aux += text.getText().toLowerCase() + "7";
+				text.setText(aux);
 			}
 				
 		}
@@ -159,13 +152,13 @@ public class Calculadora {
 		button_7.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				int valor=8;
-				if (e.getSource()==button_7) {
-		            text.setText(""+valor);
+				String aux = "";
+				aux += text.getText().toLowerCase() + "8";
+				text.setText(aux);
 		        }
 			}
 				
-		}
+		
 		);
 		
 		JButton button_8 = new JButton("9");
@@ -174,50 +167,66 @@ public class Calculadora {
 		
 		button_8.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				String aux = "";
+				aux += text.getText().toLowerCase() + "9";
+				text.setText(aux);
 				
-				int valor=9;
-				if (e.getSource()==button_8) {
-		            text.setText(""+valor);
-		        }
 			}
 				
 		}
 		);
 		
 		JButton Sum = new JButton("+");
-		Sum.setBounds(220, 64, 50, 23);
+		Sum.setBounds(219, 172, 50, 23);
 		frame.getContentPane().add(Sum);
 		Sum.addActionListener (new ActionListener(){
-		public void actionPerformed(ActionEvent e){
-			int numero=0;
-			
-			if (e.getSource()==Sum) {
-		String num1 =text.getText();
-		String num2 =text.getText();
-		
+			public void actionPerformed(ActionEvent e){
+				String aux = text.getText();
+					operacion = 1;
+					num1 = Integer.parseInt(aux);
+					text.setText("");
+	}
+				
+		}
+		);
 
-		numero = Integer.valueOf(num1).intValue();
-		numero = numero + Integer.valueOf(num2).intValue();
-		      
-}
-			text.setText(""+numero);
-		}
-		}
-);
+
 		JButton tot = new JButton("=");
-		tot.setBounds(220, 98, 50, 23);
+		tot.setBounds(149, 172, 50, 23);
 		frame.getContentPane().add(tot);
+		tot.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e){
+			String aux = text.getText();
+			num2 = Integer.parseInt(aux);
+			float igual=0f;
+			if (operacion == 1) {
+				igual = num1 + num2;
+			}else if(operacion==2){
+				igual = num1-num2;
+			}else if(operacion==3){
+				igual = num1*num2;
+			}else if(operacion==4){
+				igual = num1/num2;
+			}
+			num1=num2;
+			num2=0;
+			aux=String.valueOf(igual);
+			text.setText(aux);
+		}
+	});
+		
+		
 		
 		JButton btnC = new JButton("C");
-		btnC.setBounds(280, 98, 50, 23);
+		btnC.setBounds(89, 172, 50, 23);
 		frame.getContentPane().add(btnC);
 		btnC.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e){
 					
-					int valor=0;
+					
 					if (e.getSource()==btnC) {
-			            text.setText(""+valor);
+			            text.setText("");
 			        }
 				}
 					
@@ -226,14 +235,69 @@ public class Calculadora {
 		
 		
 		JButton button_11 = new JButton("0");
-		button_11.setBounds(220, 132, 50, 23);
+		button_11.setBounds(29, 172, 50, 23);
 		frame.getContentPane().add(button_11);
 		
+		button_11.addActionListener (new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				String aux = "";
+				aux += text.getText().toLowerCase() + "0";
+				text.setText(aux);
+				
+			}
+				
+		}
+		);
+		
+		
 		text = new JTextField();
-		text.setText("0");
 		text.setBounds(25, 11, 194, 23);
 		frame.getContentPane().add(text);
 		text.setColumns(10);
+		
+		JButton button_9 = new JButton("*");
+		button_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String aux = text.getText();
+				operacion = 3;
+				num1 = Integer.parseInt(aux);
+				text.setText("");
+}
+			
 	}
-
+	);
+		button_9.setBounds(219, 98, 50, 23);
+		frame.getContentPane().add(button_9);
+		
+		JButton button_10 = new JButton("/");
+		button_10.setBounds(219, 64, 50, 23);
+		frame.getContentPane().add(button_10);
+		button_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String aux = text.getText();
+				operacion = 4;
+				num1 = Integer.parseInt(aux);
+				text.setText("");
+}
+			
+	}
+	);
+		
+		JButton button_12 = new JButton("-");
+		button_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String aux = text.getText();
+				operacion = 2;
+				num1 = Integer.parseInt(aux);
+				text.setText("");
+}
+			
+	}
+	);
+		
+		button_12.setBounds(219, 132, 50, 23);
+		frame.getContentPane().add(button_12);
+		
+	}
 }
